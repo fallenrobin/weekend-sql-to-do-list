@@ -32,7 +32,29 @@ router.post('/', (req, res) => {
     });
 });
 
+// DELETE
+router.delete('/:id', (req, res) => {
+  // grab the specific id of the task
+  let id = req.params.id;
+  console.log('Need to delete:', id);
+  
 
+  const queryText = `
+        DELETE FROM "tasks"
+        WHERE "id" = $1;
+    `;
+  // Sanitize the data
+  values = [id];
+
+  pool.query(queryText, values)
+    .then(result => {
+      res.sendStatus(204);
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    })
+
+}); // end delete
 
 
 

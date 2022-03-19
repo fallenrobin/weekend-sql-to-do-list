@@ -50,16 +50,15 @@ function deleteTask() {
   console.log('CLICKED DELETE', id);
   console.log(id);
 
-
-  // $.ajax({
-  //   url: `/koalas/${id}`,
-  //   method: 'DELETE'
-  // }).then(function (response) {
-  //   console.log('Deleted');
-  //   getKoalas();
-  // }).catch(function (err) {
-  //   console.log(err);
-  // })
+  $.ajax({
+    url: `/todo/${id}`,
+    method: 'DELETE'
+  }).then(function (response) {
+    console.log('Deleted task');
+    getTasks();
+  }).catch(function (err) {
+    console.log(err);
+  })
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -110,9 +109,10 @@ function renderTasks(tasks) {
       // row.data('task', task);
       $('#viewTasks').prepend(row);
       console.log(row.data('id'));
+  
     } else {
       let row = $(`
-      <tr data-task=${task.id}>
+      <tr data-id=${task.id}>
               <td class="priorityClass highPriority">${task.priority}</td>
               <td>${task.task}</td>
               <td>${task.category}</td>
@@ -122,7 +122,7 @@ function renderTasks(tasks) {
         `);
       // row.data('task', task);
       $('#viewTasks').prepend(row);
-      console.log(row.data('task'));
+      console.log(row.data('id'));
     }
   }
 }
