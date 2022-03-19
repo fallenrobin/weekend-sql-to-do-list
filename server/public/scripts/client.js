@@ -8,25 +8,45 @@ function onReady() {
 }
 
 function setupClickListeners() {
-  $( '#submitBtn' ).on( 'click', console.log( 'click' ));
-}
-    // get user input and put in an object
+  $('#submitBtn').on('click', function(){
+    
+  // get user input and put in an object
 
-  //   console.log($('#readyForTransferIn').val());
-  //   let koalaToSend = {
-  //     name: $('#nameIn').val(),
-  //     age: $('#ageIn').val(),
-  //     gender: $('#genderIn').val(),
-  //     readyForTransfer: $('#readyForTransferIn').val(),
-  //     notes: $('#notesIn').val(),
-  //   };
-  //   // call saveKoala with the new object
-  //   saveKoala( koalaToSend );
-  // }); 
-  // $( '#viewKoalas' ).on( 'click', '.transferBtn', readyForTransfer);
-  // $( '#viewKoalas' ).on( 'click', '.deleteBtn', deleteKoala);
+  console.log($('#taskInput').val());
+  let newTask = {
+    task: $('#taskInput').val(),
+    priority: 'high',
+    category: 'home',
+    completed: false
+  };
+  console.log(newTask);
+  insertTask(newTask);
   
+  // call newTask with the new object
+  // insertTask(newTask);
 
+  // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
+
+  // $('#viewTasks').on('click', '.deleteBtn', console.log('clicked delete'));
+})
+}
+
+function insertTask(taco) {
+  console.log('in insertTask', taco);
+  // ajax call to server to get koalas
+  // $.ajax({
+  //   type: 'POST',
+  //   url: '/todo',
+  //   data: taco,
+  // }).then(function (response) {
+  //   console.log('Response from server.', response);
+  //   getKoalas();
+  // }).catch(function (error) {
+  //   console.log('Error in POST', error)
+  //   alert('Unable to add task at this time. Please try again later.');
+  // });
+
+}
 
 // Close the dropdown menu if the user clicks outside of it
 // window.onclick = function(event) {
@@ -49,7 +69,7 @@ function getTasks() {
     type: 'GET',
     url: '/todo'
   }).then(function (response) {
-    console.log(response);
+    // console.log(response);
     renderTasks(response); //to append current tasks on DOM
   }).catch(function (error) {
     console.log('error in GET', error);
@@ -75,7 +95,7 @@ function renderTasks(tasks) {
           `);
       row.data('task', task);
       $('#viewTasks').append(row);
-      console.log(row.data('task'));
+      // console.log(row.data('task'));
     } else {
       let row = $(`
       <tr>
@@ -88,7 +108,7 @@ function renderTasks(tasks) {
         `);
       row.data('task', task);
       $('#viewTasks').append(row);
-      console.log(row.data('task'));
+      // console.log(row.data('task'));
     }
   }
 }
