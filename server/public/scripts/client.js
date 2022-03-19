@@ -3,9 +3,29 @@ $(onReady);
 function onReady() {
   console.log('ready!');
   getTasks();
+  setupClickListeners();
   // $('.dropdown-toggle').dropdown();
 }
 
+function setupClickListeners() {
+  $( '#submitBtn' ).on( 'click', console.log( 'click' ));
+}
+    // get user input and put in an object
+
+  //   console.log($('#readyForTransferIn').val());
+  //   let koalaToSend = {
+  //     name: $('#nameIn').val(),
+  //     age: $('#ageIn').val(),
+  //     gender: $('#genderIn').val(),
+  //     readyForTransfer: $('#readyForTransferIn').val(),
+  //     notes: $('#notesIn').val(),
+  //   };
+  //   // call saveKoala with the new object
+  //   saveKoala( koalaToSend );
+  // }); 
+  // $( '#viewKoalas' ).on( 'click', '.transferBtn', readyForTransfer);
+  // $( '#viewKoalas' ).on( 'click', '.deleteBtn', deleteKoala);
+  
 
 
 // Close the dropdown menu if the user clicks outside of it
