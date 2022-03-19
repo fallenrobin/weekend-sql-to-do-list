@@ -23,7 +23,7 @@ function setupClickListeners() {
     // call newTask with the new object
     insertTask(newTask);
   })
-  // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
+  $('#viewTasks').on('click', '.completeBtn', completeTask);
 
   $('#viewTasks').on('click', '.deleteBtn', deleteTask);
 }
@@ -55,6 +55,22 @@ function deleteTask() {
     method: 'DELETE'
   }).then(function (response) {
     console.log('Deleted task');
+    getTasks();
+  }).catch(function (err) {
+    console.log(err);
+  })
+}
+
+function completeTask() {
+  let id = $(this).closest('tr').data('id');
+  console.log('Clicked COMPLETE', id);
+  console.log(id);
+
+  $.ajax({
+    url: `/todo/${id}`,
+    method: 'PUT'
+  }).then(function (response) {
+    console.log('Completed task');
     getTasks();
   }).catch(function (err) {
     console.log(err);

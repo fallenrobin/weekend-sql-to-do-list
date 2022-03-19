@@ -56,7 +56,26 @@ router.delete('/:id', (req, res) => {
 
 }); // end delete
 
+router.put('/:id', (req, res) => {
+  let id = req.params.id;
+  console.log(req.body, id);
+  // res.sendStatus(200);
 
+  queryText = `
+      UPDATE "tasks"
+      SET "completed" = NOT "completed"
+      WHERE "id" = $1;`;
+
+  const values = [id];
+
+  pool.query(queryText, values)
+      .then(result => {
+          res.sendStatus(200);
+      }).catch(err => {
+          console.log(err)
+          res.sendStatus(500);
+      })
+});
 
 
 
