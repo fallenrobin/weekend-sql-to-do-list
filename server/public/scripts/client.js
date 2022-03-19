@@ -22,10 +22,10 @@ function setupClickListeners() {
 
     // call newTask with the new object
     insertTask(newTask);
-    // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
-
-    // $('#viewTasks').on('click', '.deleteBtn', console.log('clicked delete'));
   })
+  // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
+
+  $('#viewTasks').on('click', '.deleteBtn', deleteTask);
 }
 
 function insertTask(taco) {
@@ -42,6 +42,11 @@ function insertTask(taco) {
     console.log('Error in POST', error)
     alert('Unable to add task at this time. Please try again later.');
   });
+
+}
+
+function deleteTask() {
+  console.log('click delete');
 
 }
 
