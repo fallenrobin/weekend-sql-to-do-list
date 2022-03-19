@@ -1,24 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/client.js"></script>
-    <link rel="stylesheet" href="styles/bootstrap.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Get 'er done</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/client.js"></script>
+  <link rel="stylesheet" href="styles/bootstrap.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Get 'er done</title>
 </head>
-<header>Get 'er done!</header>
+<header>
+  <h1>Get 'er done!</h1>
+</header>
+
 <body>
-    <form action="/">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" value="John"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="Doe"><br><br>
-        <input type="submit" value="Submit">
-      </form>
-    
+  <div>
+    <input type="text" id="taskInput" placeholder="Gotta get done!"><button class="btn btn-info" id="submitBtn">Add
+      'er</button>
+
+
+    <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Priority
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+
+    <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Category
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Do the thing!</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="viewTasks">
+      <tr>
+        <td class="priorityClass highPriority">hardcoded as highPriority</td>
+        <td>hardcoded task!</td>
+        <td>hardcoded home</td>
+        <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
+        <td><button class="btn btn-danger deleteBtn">Remove</button></td>
+      </tr>
+    </tbody>
+
 </body>
+
 </html>
