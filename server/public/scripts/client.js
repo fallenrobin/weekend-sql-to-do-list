@@ -8,43 +8,40 @@ function onReady() {
 }
 
 function setupClickListeners() {
-  $('#submitBtn').on('click', function(){
-    
-  // get user input and put in an object
+  $('#submitBtn').on('click', function () {// get user input and put in an object
 
-  console.log($('#taskInput').val());
-  let newTask = {
-    task: $('#taskInput').val(),
-    priority: 'high',
-    category: 'home',
-    completed: false
-  };
-  console.log(newTask);
-  insertTask(newTask);
-  
-  // call newTask with the new object
-  // insertTask(newTask);
 
-  // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
+    console.log($('#taskInput').val());
+    let newTask = {
+      task: $('#taskInput').val(),
+      priority: 'high',
+      category: 'home',
+      completed: false
+    };
+    console.log(newTask);
 
-  // $('#viewTasks').on('click', '.deleteBtn', console.log('clicked delete'));
-})
+    // call newTask with the new object
+    insertTask(newTask);
+    // $('#viewTasks').on('click', '.completeBtn', console.log('clicked complete'));
+
+    // $('#viewTasks').on('click', '.deleteBtn', console.log('clicked delete'));
+  })
 }
 
 function insertTask(taco) {
   console.log('in insertTask', taco);
-  // ajax call to server to get koalas
-  // $.ajax({
-  //   type: 'POST',
-  //   url: '/todo',
-  //   data: taco,
-  // }).then(function (response) {
-  //   console.log('Response from server.', response);
-  //   getKoalas();
-  // }).catch(function (error) {
-  //   console.log('Error in POST', error)
-  //   alert('Unable to add task at this time. Please try again later.');
-  // });
+  // ajax call to add newTask object to DB
+  $.ajax({
+    type: 'POST',
+    url: '/todo',
+    data: taco,
+  }).then(function (response) {
+    console.log('Response from server.', response);
+    getTasks();
+  }).catch(function (error) {
+    console.log('Error in POST', error)
+    alert('Unable to add task at this time. Please try again later.');
+  });
 
 }
 
@@ -86,28 +83,28 @@ function renderTasks(tasks) {
     if (task.completed === false) {
       let row = $(`
           <tr>
-              <td class="priorityClass highPriority">hardcoded as highPriority</td>
-              <td>hardcoded task!</td>
-              <td>hardcoded home</td>
+              <td class="priorityClass highPriority">${task.priority}</td>
+              <td>${task.task}</td>
+              <td>${task.category}</td>
               <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
         </tr>
           `);
       row.data('task', task);
-      $('#viewTasks').append(row);
+      $('#viewTasks').prepend(row);
       // console.log(row.data('task'));
     } else {
       let row = $(`
       <tr>
-              <td class="priorityClass highPriority">hardcoded as highPriority</td>
-              <td>hardcoded task!</td>
-              <td>hardcoded home</td>
+              <td class="priorityClass highPriority">${task.priority}</td>
+              <td>${task.task}</td>
+              <td>${task.category}</td>
               <td></td>
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
       </tr>
         `);
       row.data('task', task);
-      $('#viewTasks').append(row);
+      $('#viewTasks').prepend(row);
       // console.log(row.data('task'));
     }
   }
