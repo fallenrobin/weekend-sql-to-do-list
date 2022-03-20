@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   let queryText = `INSERT INTO "tasks" ("task", "priority", "category", "completed")
                    VALUES ($1, $2, $3, $4);`;
 
-  let values = [newTask.task, 'high', 'home', false]
+  let values = [newTask.task, 'ASAP', 'Home', false]
 
   pool.query(queryText, values)
   

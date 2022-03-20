@@ -5,49 +5,54 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="scripts/bootstrap.bundle.js"></script>
   <script src="scripts/jquery.js"></script>
   <script src="scripts/client.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Smokum&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/bootstrap.css">
   <link rel="stylesheet" href="styles/style.css">
   <title>Get 'er done</title>
 </head>
 <header>
-  <h1>Get 'er done!</h1>
+  <h1 class="display-1">Get 'er done!</h1>
 </header>
 
 <body>
-  <div>
-    <input type="text" id="taskInput" placeholder="Gotta get done!"><button class="btn btn-info" id="submitBtn">Add
-      'er</button>
-
+  <div id="inputBlock">
+    <input type="text" id="taskInput" placeholder="Gotta get done!" required>
 
     <div class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+      <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Priority
       </a>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">ASAP</a>
+        <a class="dropdown-item" href="#">Soonish</a>
+        <a class="dropdown-item" href="#">Whenevs</a>
       </div>
     </div>
 
     <div class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+      <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
         Category
       </a>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">Home</a>
+        <a class="dropdown-item" href="#">Work</a>
+        <a class="dropdown-item" href="#">School... if it worked probs would have made more categories too</a>
       </div>
     </div>
 
+    <button class="btn btn-info" id="submitBtn">Add 'er to the list!</button>
+
   </div>
+
 
   <table class="table">
     <thead>

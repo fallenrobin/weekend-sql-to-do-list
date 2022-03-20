@@ -115,25 +115,25 @@ function renderTasks(tasks) {
 
     if (task.completed === false) {
       let row = $(`
-          <tr data-id=${task.id} data-complete=${task.completed}>
-              <td class="priorityClass highPriority">${task.priority}</td>
+              <tr data-id=${task.id}>
+              <td class="${task.priority}">${task.priority}</td>
               <td>${task.task}</td>
-              <td>${task.category}</td>
+              <td class="${task.category}">${task.category}</td>
               <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
         </tr>
           `);
       $('#viewTasks').prepend(row);
       console.log(row.data('id'));
-      console.log(row.data('complete'));
+      // console.log(row.data('complete'));
   
     } else {
       let row = $(`
-      <tr class="taskCompleted" data-id=${task.id} data-complete=${task.completed}>
-              <td class="priorityClass highPriority">${task.priority}</td>
+              <tr data-id=${task.id}>
+              <td class="noPriority"></td>
               <td>${task.task}</td>
-              <td>${task.category}</td>
-              <td></td>
+              <td class="${task.category}">${task.category}</td>
+              <td id="hands">🙌</td>
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
       </tr>
         `);
