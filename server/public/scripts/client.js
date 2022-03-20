@@ -38,6 +38,7 @@ function insertTask(taco) {
   }).then(function (response) {
     console.log('Response from server.', response);
     getTasks();
+    $('#taskInput').val('');
   }).catch(function (error) {
     console.log('Error in POST', error)
     alert('Unable to add task at this time. Please try again later.');
@@ -114,7 +115,7 @@ function renderTasks(tasks) {
 
     if (task.completed === false) {
       let row = $(`
-          <tr data-id=${task.id} data-completed=${task.completed}>
+          <tr data-id=${task.id} data-complete=${task.completed}>
               <td class="priorityClass highPriority">${task.priority}</td>
               <td>${task.task}</td>
               <td>${task.category}</td>
@@ -123,7 +124,8 @@ function renderTasks(tasks) {
         </tr>
           `);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id','completed'));
+      console.log(row.data('id'));
+      console.log(row.data('complete'));
   
     } else {
       let row = $(`
@@ -136,7 +138,8 @@ function renderTasks(tasks) {
       </tr>
         `);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id', 'completed'));
+      console.log(row.data('id'));
+      console.log(row.data('complete'));
     }
   }
 }
