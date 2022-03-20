@@ -1,10 +1,17 @@
 $(onReady);
 
+// import { createPopper } from '@popperjs/core';
+
+// const button = document.querySelector('#button');
+// const tooltip = document.querySelector('#tooltip');
+
 function onReady() {
   console.log('ready!');
   getTasks();
   setupClickListeners();
-  // $('.dropdown-toggle').dropdown();
+  // $('#priorityDropDown').on('show.bs.dropdown', function () {
+  //   console.log('drop down clicked!');
+  // })
 }
 
 function setupClickListeners() {
@@ -26,7 +33,28 @@ function setupClickListeners() {
   $('#viewTasks').on('click', '.completeBtn', completeTask);
 
   $('#viewTasks').on('click', '.deleteBtn', deleteTask);
+  $('.dropdown-toggle').dropdown();
 }
+
+function dropdown(){
+  $('.dropdown').on('show.bs.dropdown', function(){
+    console.log('drop down clicked!')
+  });
+  $('.dropdown').on('shown.bs.dropdown', function(){
+    alert('The dropdown is now fully shown.');
+  });
+  $('.dropdown').on('hide.bs.dropdown', function(e){
+    alert('The dropdown is about to be hidden.');
+  });
+  $('.dropdown').on('hidden.bs.dropdown', function(){
+    alert('The dropdown is now fully hidden.');
+  });
+};
+
+// function dropdown() {
+//   console.log('drop down!');
+  
+// }
 
 function insertTask(taco) {
   console.log('in insertTask', taco);
@@ -64,7 +92,7 @@ function deleteTask() {
 
 function completeTask() {
   let id = $(this).closest('tr').data('id');
-  console.log('Clicked COMPLETE', id);
+  // console.log('Clicked COMPLETE', id);
   console.log(id);
 
   $.ajax({
@@ -77,20 +105,6 @@ function completeTask() {
     console.log(err);
   })
 }
-
-// Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(event) {
-//     if (!event.target.matches('.dropbtn')) {
-//       var dropdowns = document.getElementsByClassName("dropdown-content");
-//       var i;
-//       for (i = 0; i < dropdowns.length; i++) {
-//         var openDropdown = dropdowns[i];
-//         if (openDropdown.classList.contains('show')) {
-//           openDropdown.classList.remove('show');
-//         }
-//       }
-//     }
-//   }
 
 function getTasks() {
   console.log('in connect to DB');
@@ -124,7 +138,7 @@ function renderTasks(tasks) {
         </tr>
           `);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id'));
+      // console.log(row.data('id'));
       console.log(row.data('complete'));
   
     } else {
@@ -138,7 +152,7 @@ function renderTasks(tasks) {
       </tr>
         `);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id'));
+      // console.log(row.data('id'));
       console.log(row.data('complete'));
     }
   }
