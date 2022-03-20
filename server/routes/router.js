@@ -5,7 +5,8 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
   console.log('inside router GET');
-  let queryText = 'SELECT * FROM "tasks";'; // double quotes or not
+  let queryText = `SELECT * FROM "tasks"
+                  ORDER BY "id" ASC;`; 
   pool.query(queryText).then(result => {
     // Sends back the results in an object
     res.send(result.rows);
@@ -22,7 +23,11 @@ router.post('/', (req, res) => {
 
   let queryText = `INSERT INTO "tasks" ("task", "priority", "category", "completed")
                    VALUES ($1, $2, $3, $4);`;
-  pool.query(queryText, [newTask.task, 'high', 'home', false])
+
+  let values = [newTask.task, 'high', 'home', false]
+
+  pool.query(queryText, values)
+  
     .then(result => {
       res.sendStatus(201);
     })

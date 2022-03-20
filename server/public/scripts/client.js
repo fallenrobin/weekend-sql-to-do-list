@@ -114,7 +114,7 @@ function renderTasks(tasks) {
 
     if (task.completed === false) {
       let row = $(`
-          <tr data-id=${task.id}>
+          <tr data-id=${task.id} data-completed=${task.completed}>
               <td class="priorityClass highPriority">${task.priority}</td>
               <td>${task.task}</td>
               <td>${task.category}</td>
@@ -122,13 +122,12 @@ function renderTasks(tasks) {
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
         </tr>
           `);
-      // row.data('task', task);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id'));
+      console.log(row.data('id','completed'));
   
     } else {
       let row = $(`
-      <tr data-id=${task.id}>
+      <tr class="taskCompleted" data-id=${task.id} data-complete=${task.completed}>
               <td class="priorityClass highPriority">${task.priority}</td>
               <td>${task.task}</td>
               <td>${task.category}</td>
@@ -136,9 +135,8 @@ function renderTasks(tasks) {
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
       </tr>
         `);
-      // row.data('task', task);
       $('#viewTasks').prepend(row);
-      console.log(row.data('id'));
+      console.log(row.data('id', 'completed'));
     }
   }
 }
