@@ -1,10 +1,10 @@
-# Project Name
-Weekend SQL To-Do List
+# Weekend SQL To-Do List
+
 
 ## Description
 
-_Time spent learning SQL, how to use Postico, and full stack interactivity: about 4 days_
-_Time to execute thr project, start to finish: ~15 hours_
+- _Time spent learning SQL, how to use Postico, and full stack interactivity: about 4 days_
+- _Time to execute the project, start to finish: ~15 hours_
 
 This was our first project to make a full stack web app from scratch! I created all the files from the ground up.
 
