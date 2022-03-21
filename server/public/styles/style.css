@@ -37,21 +37,25 @@ input {
    width: 90%;
 }
 
+/* Makes red cell color for high priority */
 .ASAP {
     background-color: #c11a2b !important;
     color: #fcedd8 !important;
 }
 
+/* Makes orange cell color for medium priority */
 .soonish {
     background-color: #e48c0a !important;
     color: black !important;
 }
 
+/* Makes green cell color for low priority */
 .whenevs {
     background-color: #95ec4d !important;
     color: black !important;
 }
 
+/* No different cell color for completed task */
 .noPriority {
     background-color: #fcedd8 !important;
 }

@@ -13,6 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Smokum&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/bootstrap.css">
   <link rel="stylesheet" href="styles/style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
   <title>Get 'er done</title>
 </head>
 <header>
@@ -23,6 +26,7 @@
   <div id="inputBlock">
     <input type="text" id="taskInput" placeholder="Gotta get done!" required>
 
+    <!-- I never figured out how to get the dropdowns to work 😭 -->
     <div class="dropdown show">
       <a class="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -65,13 +69,9 @@
       </tr>
     </thead>
     <tbody id="viewTasks">
-      <tr>
-        <td class="priorityClass highPriority">hardcoded as highPriority</td>
-        <td>hardcoded task!</td>
-        <td>hardcoded home</td>
-        <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
-        <td><button class="btn btn-danger deleteBtn">Remove</button></td>
-      </tr>
+
+      <!--prepended items will populate here -->
+
     </tbody>
 
 </body>

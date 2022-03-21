@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const pool = require('../modules/pool.js');
+const pool = require('../modules/pool.js'); //route to DB
 
-router.get('/', (req, res) => {
+router.get('/', (req, res) => {  //sends query to read current contents of DB
   console.log('inside router GET');
   let queryText = `SELECT * FROM "tasks"
                   ORDER BY "id" ASC;`; 
   pool.query(queryText).then(result => {
-    // Sends back the results in an object
-    res.send(result.rows);
+    // Sends back the results by row
+    res.send(result.rows); //send back to client
   })
     .catch(error => {
       console.log('error getting to DB', error);
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res) => { //sends query to ADD an item from user input
   let newTask = req.body;
   console.log(`Adding task`, newTask);
 
@@ -26,10 +26,10 @@ router.post('/', (req, res) => {
 
   let values = [newTask.task, 'ASAP', 'Home', false]
 
-  pool.query(queryText, values)
+  pool.query(queryText, values) //sends query to ADD an item from user input
   
     .then(result => {
-      res.sendStatus(201);
+      res.sendStatus(201); //tells client I DID IT
     })
     .catch(error => {
       console.log(`Error adding new task`, error);
@@ -53,18 +53,17 @@ router.delete('/:id', (req, res) => {
 
   pool.query(queryText, values)
     .then(result => {
-      res.sendStatus(204);
+      res.sendStatus(204); //tells client I DID IT (actually, 'no content')
     }).catch(err => {
       console.log(err);
       res.sendStatus(500);
     })
 
-}); // end delete
+});
 
 router.put('/:id', (req, res) => {
   let id = req.params.id;
   console.log(req.body, id);
-  // res.sendStatus(200);
 
   queryText = `
       UPDATE "tasks"
@@ -73,9 +72,9 @@ router.put('/:id', (req, res) => {
 
   const values = [id];
 
-  pool.query(queryText, values)
+  pool.query(queryText, values) //sends query to UPDATE an item's "completed" value to true
       .then(result => {
-          res.sendStatus(200);
+          res.sendStatus(200); //says I DID IT
       }).catch(err => {
           console.log(err)
           res.sendStatus(500);
