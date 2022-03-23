@@ -4,7 +4,7 @@ function onReady() {
   console.log('ready!');
   getTasks();
   setupClickListeners();
-  // $('.dropdown-toggle').dropdown(); // don't know if this should be here...
+  $('.dropdown-toggle').dropdown(); // don't know if this should be here...
   // I never figured out how to get the dropdowns to work 😭 
   //(i did try a variety of things! And even more things on another branch!!)
 }
@@ -16,7 +16,7 @@ function setupClickListeners() { // get user input and put in an object
     console.log($('#taskInput').val());
     let newTask = { //Creates object out of user input
       task: $('#taskInput').val(),
-      priority: 'high',
+      priority: $("#priority option:selected").text(),//gets an empty string
       category: 'home',
       completed: false
     };
@@ -28,7 +28,11 @@ function setupClickListeners() { // get user input and put in an object
   $('#viewTasks').on('click', '.completeBtn', completeTask);
 
   $('#viewTasks').on('click', '.deleteBtn', deleteTask);
-}
+  //   $('#priority').on('click', function(){
+  //     let status = ($('#priority').val($(this).text()));
+  //     console.log(status);
+};
+
 
 function insertTask(taco) {   // ajax call to add newTask object to DB
   console.log('in insertTask', taco);
@@ -103,30 +107,38 @@ function renderTasks(tasks) { //will prepend current tasks on DOM in tbody
       // "completed" = false
       let row = $(`
               <tr data-id=${task.id}>
-              <td class="${task.priority}">${task.priority}</td>
               <td>${task.task}</td>
-              <td class="${task.category}">${task.category}</td>
               <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
               <td><button class="btn btn-danger deleteBtn">Remove</button></td>
         </tr>
           `);
+          // <tr data-id=${task.id}>
+          //     <td class="${task.priority}">${task.priority}</td>
+          //     <td>${task.task}</td>
+          //     <td class="${task.category}">${task.category}</td>
+          //     <td><button class="btn btn-success completeBtn">Got 'er done!</button></td>
+          //     <td><button class="btn btn-danger deleteBtn">Remove</button></td>
       $('#viewTasks').prepend(row);
       console.log(row.data('id'));
       // console.log(row.data('complete'));
-  
+
     } else { // once 'got 'er done button is clicked, the next GET will trigger this version
       let row = $(`
               <tr data-id=${task.id}>
-              <td class="noPriority"></td>
-              <td>${task.task}</td>
-              <td class="${task.category}">${task.category}</td>
-              <td id="hands">🙌</td>
-              <td><button class="btn btn-danger deleteBtn">Remove</button></td>
-      </tr>
+                <td>${task.task}</td>
+                <td id="hands">🙌</td>
+                <td><button class="btn btn-danger deleteBtn">Remove</button></td>
+              </tr>
         `);
       $('#viewTasks').prepend(row); //actual prepend
-      console.log(row.data('id'));
-      console.log(row.data('complete'));
+      // <tr data-id=${task.id}>
+      //   <td class="noPriority"></td>
+      //   <td>${task.task}</td>
+      //   <td class="${task.category}">${task.category}</td>
+      //   <td id="hands">🙌</td>
+      //   <td><button class="btn btn-danger deleteBtn">Remove</button></td>
+        console.log(row.data('id'));
+        console.log(row.data('complete'));
     }
   }
 }

@@ -8,10 +8,10 @@ body {
     text-align: center;
     margin: 0;
     font-family: 'Smokum', cursive;
-    font-size: 10rem;
+    font-size: 8rem;
     text-align: center;
-    height: 50vh;
-    line-height: 50vh;
+    height: 25vh;
+    line-height: 15vh;
     color: #fcedd8;
     background: #794d15;
     /* font-family: 'Niconne', cursive; */
@@ -27,10 +27,9 @@ body {
         45px 45px 0px #5e3909;
 }
 
-input {
-    text-align: center;
-    border-radius: 4px;
-}
+/* input {
+    
+} */
 
 .table {
    margin: 3%;
@@ -64,14 +63,18 @@ input {
 
 #taskInput {
     border: 1px solid rgb(74, 154, 168) !important;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 3%;
+    max-height: 5%;
 }
 
 #inputBlock {
     /* display: inline-block; */
     display: flex;
     margin: auto;
-    width: 50%;
-    padding: 10px;
+    width: 35%;
+    padding: 5px;
 }
 
 .btn-warning {
