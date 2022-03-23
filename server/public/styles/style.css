@@ -71,8 +71,10 @@ body {
 
 #inputBlock {
     /* display: inline-block; */
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 25%;
     display: flex;
-    margin: auto;
     width: 35%;
     padding: 5px;
 }
